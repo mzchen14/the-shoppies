@@ -1,17 +1,24 @@
 import React, { Component } from "react";
-import singleMovie from "./singleMovie";
+import Nominations from "./Nominations";
+import Results from "./Results";
 import API from "../API";
+import "../styles/Search.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
       search: "",
+      currentTerm: "",
       moviesList: [],
       nominatedList: [],
     };
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleNominate = this.handleNominate.bind(this);
+    this.removeNomination = this.removeNomination.bind(this);
   }
 
   handleSubmit = async (evt) => {
@@ -23,9 +30,8 @@ class Search extends Component {
       this.setState({
         ...this.state,
         moviesList: movieData.data.Search,
+        currentTerm: this.state.search,
       });
-      console.log(movieData);
-      console.log(this.state);
     } catch (error) {
       console.log(error);
     }
@@ -40,22 +46,28 @@ class Search extends Component {
   };
 
   handleNominate = (movie) => {
-    if (this.state.nominatedList.length == 5) {
-      alert("You've Nomianted 5 Movies, Thank you!");
-    } else {
-      this.setState({
-        ...this.state,
-        nominatedList: [...this.state.nominatedList, movie],
-      });
-      console.log(movie);
-      console.log(`${movie.Title} was nominated!`);
-    }
+    this.setState({
+      ...this.state,
+      nominatedList: [...this.state.nominatedList, movie],
+    });
+    // if (this.state.nominatedList.length === 5) {
+    //   alert("You've Nomianted 5 Movies, Thank you!");
+    // }
+  };
+
+  removeNomination = (movie) => {
+    let newList = this.state.nominatedList.filter(
+      (element) => element !== movie
+    );
+    this.setState({
+      ...this.state,
+      nominatedList: newList,
+    });
   };
 
   render() {
     return (
       <div>
-        This is the search bar
         <div className="search-bar">
           <input
             placeholder="Enter movie title"
@@ -63,28 +75,24 @@ class Search extends Component {
             onChange={this.handleChange}
           />
           <button type="submit" onClick={this.handleSubmit}>
-            Search
+            <FontAwesomeIcon icon={faSearch} />
           </button>
         </div>
-        <div className="movie-list">
-          <ul>
-            <h1>List of Movies</h1>
-            {this.state.moviesList.map((movie) => {
-              return (
-                <div key={movie.imdbID}>
-                  <img src={movie.Poster} alt="poster"></img>
-                  {movie.Title} ({movie.Year})
-                  <button
-                    onClick={() => {
-                      this.handleNominate(movie);
-                    }}
-                  >
-                    Nominate
-                  </button>
-                </div>
-              );
-            })}
-          </ul>
+        <div className="container">
+          <div className="movie-list">
+            <Results
+              moviesList={this.state.moviesList}
+              nominate={this.handleNominate}
+              nominatedList={this.state.nominatedList}
+              term={this.state.currentTerm}
+            />
+          </div>
+          <div>
+            <Nominations
+              remove={this.removeNomination}
+              nominationList={this.state.nominatedList}
+            />
+          </div>
         </div>
       </div>
     );

@@ -1,8 +1,13 @@
 import React from "react";
 
-const singleMovie = (props) => (
-  <div id="single-movie">
-    <div>Hello</div>
-  </div>
-);
-export default singleMovie;
+const SingleMovie = (props) => {
+  const { movie } = props;
+  return (
+    <div>
+      {/* <img src={movie.Poster} height="100px" alt="poster"></img> */}
+      {movie.Title} ({movie.Year})
+    </div>
+  );
+};
+
+export default SingleMovie;
