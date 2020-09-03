@@ -73,8 +73,13 @@ class Search extends Component {
             placeholder="Enter movie title"
             value={this.state.search}
             onChange={this.handleChange}
+            required
           />
-          <button type="submit" onClick={this.handleSubmit}>
+          <button
+            type="submit"
+            onClick={this.handleSubmit}
+            disabled={!this.state.search}
+          >
             <FontAwesomeIcon icon={faSearch} />
           </button>
         </div>
