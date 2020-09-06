@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import Search from "./components/Search.js";
+import Search from "./component/Search.js";
 import "./styles/App.css";
 import "typeface-roboto";
 function App() {
