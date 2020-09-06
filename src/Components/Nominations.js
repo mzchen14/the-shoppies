@@ -1,5 +1,6 @@
 import React from "react";
 import SingleMovie from "./SingleMovie";
+import "../styles/Displays.css";
 
 const Nominations = (props) => {
   const { nominationList, remove } = props;
@@ -8,7 +9,7 @@ const Nominations = (props) => {
       <h1>Your Nominations</h1>
       {nominationList.map((movie) => {
         return (
-          <div key={movie.imdbID}>
+          <div className="single-movie" key={movie.imdbID}>
             <SingleMovie movie={movie} />
             <button onClick={() => remove(movie)}>Remove</button>
           </div>

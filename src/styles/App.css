@@ -3,9 +3,10 @@
   src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/707108/neon.ttf);
 }
 body {
-  /* background-color: black; */
-  /* color: white; */
+  background-color: rgb(49, 49, 51);
+  color: rgb(49, 49, 51);
 }
+
 .neon-orange {
   font-family: neon;
   color: #fb4264;
@@ -15,6 +16,7 @@ body {
   animation: neon-orange 1s ease infinite;
   -moz-animation: neon-orange 1s ease infinite;
   -webkit-animation: neon-orange 1s ease infinite;
+  margin-bottom: -20px;
 }
 
 .neon-blue {

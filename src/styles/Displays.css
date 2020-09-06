@@ -1,0 +1,11 @@
+.single-movie {
+  font-weight: 500;
+  margin: 10px;
+}
+
+button {
+  margin: 1px;
+  width: 100px;
+  height: 30px;
+  font-size: 15px;
+}
