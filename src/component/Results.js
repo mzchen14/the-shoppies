@@ -4,8 +4,6 @@ import "../styles/Displays.css";
 
 const Results = (props) => {
   const { moviesList, nominate, nominatedList, term } = props;
-  console.log(nominatedList);
-
   const checkValid = (movie) => {
     for (let item in nominatedList) {
       if (nominatedList[item].imdbID === movie.imdbID) return true;

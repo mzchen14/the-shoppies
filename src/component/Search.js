@@ -7,6 +7,8 @@ import "../styles/Search.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Grid } from "@material-ui/core";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
 
 class Search extends Component {
   constructor(props) {
@@ -17,6 +19,7 @@ class Search extends Component {
       moviesList: [],
       nominatedList: [],
       seen: false,
+      loading: false,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -27,15 +30,24 @@ class Search extends Component {
 
   handleSubmit = async (evt) => {
     evt.preventDefault();
+    this.setState({
+      ...this.state,
+      loading: true,
+    });
     try {
       let movieData = await API.get(
         `"${this.state.search}"&apikey=${process.env.REACT_APP_API_KEY}`
       );
-      this.setState({
-        ...this.state,
-        moviesList: movieData.data.Search,
-        currentTerm: this.state.search,
-      });
+      setTimeout(
+        () =>
+          this.setState({
+            ...this.state,
+            moviesList: movieData.data.Search,
+            currentTerm: this.state.search,
+            loading: false,
+          }),
+        1000
+      );
     } catch (error) {
       console.log(error);
     }
@@ -100,12 +112,23 @@ class Search extends Component {
         <Grid container spacing={2} className="container">
           <Grid item xs={6}>
             <div className="box">
-              <Results
-                moviesList={this.state.moviesList}
-                nominate={this.handleNominate}
-                nominatedList={this.state.nominatedList}
-                term={this.state.currentTerm}
-              />
+              {this.state.loading ? (
+                <Loader
+                  className="loader"
+                  type="TailSpin"
+                  color="white"
+                  height={100}
+                  width={100}
+                  timeout={1000}
+                />
+              ) : (
+                <Results
+                  moviesList={this.state.moviesList}
+                  nominate={this.handleNominate}
+                  nominatedList={this.state.nominatedList}
+                  term={this.state.currentTerm}
+                />
+              )}
             </div>
           </Grid>
           <Grid item xs={6}>

@@ -41,3 +41,7 @@ input:focus {
   padding: 10px;
   border-radius: 20px;
 }
+
+.loader {
+  margin-top: 30%;
+}
