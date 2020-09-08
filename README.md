@@ -3,6 +3,8 @@
 > Movie Awards for Entrepreneurs
 > Shopify Web Developer Intern Challenge 2021
 
+Deployed At: [https://awesome-jones-b0364f.netlify.app/](https://awesome-jones-b0364f.netlify.app/)
+
 ## Technologies Used
 Javascript, React, MaterialUI, Axios, Netlify(Deployment)
 
