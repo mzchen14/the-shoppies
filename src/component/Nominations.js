@@ -11,7 +11,12 @@ const Nominations = (props) => {
         return (
           <div className="single-movie" key={movie.imdbID}>
             <SingleMovie movie={movie} />
-            <button onClick={() => remove(movie)}>Remove</button>
+            <button
+              className="nominations-button"
+              onClick={() => remove(movie)}
+            >
+              Remove
+            </button>
           </div>
         );
       })}

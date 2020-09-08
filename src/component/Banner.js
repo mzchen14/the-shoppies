@@ -15,7 +15,8 @@ export default class Banner extends Component {
               &times;
             </span>
             <p>
-              You have nominated 5 movies. Thank you for your participation!
+              You have nominated 5 movies. Thank you for participating, may the
+              best movie win!
             </p>
           </div>
         </div>

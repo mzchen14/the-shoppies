@@ -3,7 +3,7 @@
   src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/707108/neon.ttf);
 }
 body {
-  background-color: rgb(49, 49, 51);
+  background-image: url("/stars.gif");
   color: rgb(49, 49, 51);
 }
 
@@ -57,4 +57,23 @@ body {
       0 0 5vw #082180, 0 0 0.2vw #082180, 0.5vw 0.5vw 0.1vw #0a3940;
     color: #146c80;
   }
+}
+
+.sub-text {
+  color: white;
+  background-color: gray;
+  width: 55%;
+  margin: auto;
+  border-radius: 10px;
+  padding: 8px 0px 8px 0px;
+}
+
+p {
+  margin: 2px;
+}
+
+.note {
+  color: white;
+  font-style: italic;
+  font-size: 15px;
 }

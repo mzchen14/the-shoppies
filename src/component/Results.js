@@ -4,6 +4,15 @@ import "../styles/Displays.css";
 
 const Results = (props) => {
   const { moviesList, nominate, nominatedList, term } = props;
+  console.log(nominatedList);
+
+  const checkValid = (movie) => {
+    for (let item in nominatedList) {
+      if (nominatedList[item].imdbID === movie.imdbID) return true;
+    }
+    return false;
+  };
+
   return (
     <div>
       <h1>Search Results</h1>
@@ -15,12 +24,11 @@ const Results = (props) => {
               <div className="single-movie" key={movie.imdbID}>
                 <SingleMovie movie={movie} />
                 <button
+                  className="results-button"
                   onClick={() => {
                     nominate(movie);
                   }}
-                  disabled={
-                    nominatedList.includes(movie) || nominatedList.length === 5
-                  }
+                  disabled={checkValid(movie) || nominatedList.length === 5}
                 >
                   Nominate
                 </button>
