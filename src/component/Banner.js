@@ -3,7 +3,6 @@ import "../styles/Banner.css";
 
 export default class Banner extends Component {
   handleClick = () => {
-    console.log("clicked");
     this.props.toggle();
   };
 

@@ -7,15 +7,15 @@
 .modal {
   margin: 30px;
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   background-color: rgba(0, 0, 0, 0.25);
 }
 
 .modal_content {
   background-color: white;
-  width: 300px;
+  /* width: 300px;
   top: 80px;
-  left: -180px;
+  left: -180px; */
   position: absolute;
   border: 1px solid black;
   padding: 20px;

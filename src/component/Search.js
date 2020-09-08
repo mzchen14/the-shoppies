@@ -18,12 +18,12 @@ class Search extends Component {
       nominatedList: [],
       seen: false,
     };
-
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleNominate = this.handleNominate.bind(this);
     this.removeNomination = this.removeNomination.bind(this);
     this.toggleBanner = this.toggleBanner.bind(this);
+    // this.addToLocal = this.addToLocal.bind(this);
   }
 
   handleSubmit = async (evt) => {
@@ -63,8 +63,7 @@ class Search extends Component {
         nominatedList: [...this.state.nominatedList, movie],
       });
     }
-
-    console.log(this.state.nominatedList.length);
+    // this.addToLocal(movie);
   };
 
   removeNomination = (movie) => {
@@ -75,6 +74,7 @@ class Search extends Component {
       ...this.state,
       nominatedList: newList,
     });
+    // this.removeFromLocal(movie);
   };
 
   toggleBanner = () => {
@@ -84,6 +84,21 @@ class Search extends Component {
     });
   };
 
+  // addToLocal = (value) => {
+  //   let existing = localStorage.getItem("savedData");
+  //   existing = existing ? existing.split("break") : [];
+  //   existing.push(JSON.stringify(value) + "break");
+  //   localStorage.setItem("savedData", existing.toString());
+  // };
+
+  // removeFromLocal = (value) => {
+  //   let existing = localStorage.getItem("savedData");
+  //   console.log(existing, "line96");
+  //   existing = existing.split(",,");
+  //   existing.forEach((eachMovie) => JSON.parse(eachMovie));
+  //   existing.filter((eachMovie) => eachMovie.imdbID !== value.imdbID);
+  //   localStorage.setItem("savedData", existing.join(",,"));
+  // };
   render() {
     return (
       <div>
